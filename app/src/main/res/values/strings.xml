@@ -7,4 +7,25 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_login_">Login_Activity</string>
     <string name="title_activity_signin_activity">Signin_activity</string>
+    <string name="welcome">WELCOME TO RENTAL</string>
+
+    <string name="otp">OTP</string>
+    <string name="flats">Flat</string>
+    <string name="villa">Villa</string>
+    <string name="home">Home</string>
+    <string name="str_rental">rental</string>
+    <string name="account_already">I HAVE AN ACCOUNT</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="customer">CUSTOMER</string>
+    <string name="merchant">MERCHANT</string>
+    <string name="locality">Locality</string>
+    <string name="property_type">PROPERTY TYPE</string>
+    <string name="amenities">AMENITIES</string>
+
+    <string name="apikey">AIzaSyCJuUMtjsDcC_46WIg6AIkk07O2eqoqI1U</string>
+    <string name="price_range">PRICE RANGE</string>
+
+    <string name="demo_min_label">Min</string>
+    <string name="demo_max_label">Max</string>
+    <string name="search">SEARCH</string>
 </resources>

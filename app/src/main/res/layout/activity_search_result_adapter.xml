@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="1dp">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_margin="2dp"
+        app:cardElevation="3dp"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+            <ImageView
+                android:id="@+id/houseimage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/homeimg"/>
+            <LinearLayout
+                android:layout_toRightOf="@+id/houseimage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$ 4000 - 5000"
+                    android:textStyle="bold"
+                    android:textSize="18sp"/>
+                <TextView
+                    android:id="@+id/houseaddress"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="false"
+                    android:text="5361 Augusta Drive Frederick,MD 21710"/>
+                <TextView
+                    android:id="@+id/housedetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="false"
+                    android:text="1200 Sqft -Villa Ready to Move"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/housestatus"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:singleLine="false"
+                        android:text="Ready to Move"/>
+                    <TextView
+                        android:id="@+id/callowner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/housestatus"
+                        android:layout_gravity="right"
+                        android:drawableLeft="@drawable/call_red"
+
+                        android:gravity="center"
+                        android:layout_alignParentRight="true"
+                        android:text="Call Agent"/>
+                </RelativeLayout>
+
+
+            </LinearLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

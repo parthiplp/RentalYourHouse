@@ -3,23 +3,23 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_home"
             android:icon="@drawable/home"
             android:title="Home" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_search"
             android:icon="@drawable/search"
             android:title="Search Property" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_my_activity"
             android:icon="@drawable/activity"
             android:title="My Activity" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_location"
             android:icon="@drawable/location"
             android:title="Locality Info" />
         <item
-            android:id="@+id/nav_slidesw"
+            android:id="@+id/nav_setting"
             android:icon="@drawable/setting"
             android:title="Settings" />
     </group>
