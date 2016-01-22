@@ -1,29 +1,27 @@
 package house.rental.com.rentalyourhouse;
 
-import android.app.Activity;
-import android.app.Dialog;
 import android.app.Fragment;
-import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
+
+import models.LocationModel;
 
 
 /**
@@ -59,11 +57,11 @@ public class HomeFragment extends Fragment {
         model.setLon("80.2711479");
         model.setPlace("1BHK");
         list.add(model);
-        model = new LocationModel();
+  /*      model = new LocationModel();
         model.setLat("13.0610726");
         model.setLon("80.2708475");
         model.setPlace("2BHK");
-        list.add(model);
+        list.add(model);*/
         model = new LocationModel();
         model.setLat("13.053544");
         model.setLon("80.2514631");
@@ -74,30 +72,65 @@ public class HomeFragment extends Fragment {
         model.setLon("80.2477723");
         model.setPlace("4BHK");
         list.add(model);
-        for (LocationModel locationModel:list) {
 
 
-            double latitude =Double.valueOf(locationModel.getLat());
+        for (LocationModel locationModel : list) {
+
+
+            double latitude = Double.valueOf(locationModel.getLat());
             double longitude = Double.valueOf(locationModel.getLon());
+            /*  float[] results = new float[1];
+          Location.distanceBetween(13.0610726, 80.2708475, latitude, longitude, results);
+            float distanceInMeters = results[0];
+            boolean isWithin2km = distanceInMeters < 5000;*/
 
             // create marker
-            MarkerOptions marker = new MarkerOptions().position(
-                    new LatLng(latitude, longitude)).title(locationModel.getPlace());
+      /*      MarkerOptions marker = new MarkerOptions().position(
+                    new LatLng(latitude, longitude)).title(locationModel.getPlace());*/
 
+            Marker marker = googleMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(latitude, longitude))
+                    .title(locationModel.getPlace()));
+            marker.setTitle(locationModel.getPlace());
+            marker.showInfoWindow();
             // Changing marker icon
-            marker.icon(BitmapDescriptorFactory
-                    .defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
+                /*marker.icon(BitmapDescriptorFactory
+                        .defaultMarker(BitmapDescriptorFactory.HUE_ROSE));*/
+            marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.location));
 
-            // adding marker
-            googleMap.addMarker(marker);
 
+            // aisible(tit)dding marker
+          //  googleMap.addMarker(marker);
+/*
             CameraPosition cameraPosition = new CameraPosition.Builder()
                     .target(new LatLng(latitude, longitude)).zoom(12).build();
             googleMap.animateCamera(CameraUpdateFactory
-                    .newCameraPosition(cameraPosition));
+                    .newCameraPosition(cameraPosition));*/
+
         }
+        drawCurrentLocation();
+
         // Perform any camera updates here
+
         return v;
+    }
+
+    private void drawCurrentLocation() {
+        MarkerOptions marker = new MarkerOptions().position(
+                new LatLng(13.0610726, 80.2708475));
+
+        marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.my_location));
+        googleMap.addMarker(marker);
+
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(new LatLng(13.0610726, 80.2708475)).zoom(12).build();
+
+        googleMap.animateCamera(CameraUpdateFactory
+                .newCameraPosition(cameraPosition));
+
+        Circle circle = googleMap.addCircle(new CircleOptions()
+                .center(new LatLng(13.0610726, 80.2708475)).radius(3000).fillColor(Color.WHITE).strokeColor(Color.WHITE));
+        circle.setVisible(true);
     }
 
     @Override

@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
+import models.Globals;
+
 public class SignupActivity extends AppCompatActivity {
     Button btnSubmit, btnCustomer, btnMerchant;
 
@@ -15,6 +17,7 @@ public class SignupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup_home);
+        //
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -26,9 +29,11 @@ public class SignupActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+        //
         btnSubmit = (Button) findViewById(R.id.btn_signup_submit);
         btnCustomer = (Button) findViewById(R.id.btn_customer);
         btnMerchant = (Button) findViewById(R.id.btn_merchant);
+        //
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,15 +45,17 @@ public class SignupActivity extends AppCompatActivity {
         btnCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btnCustomer.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
-                btnMerchant.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.transparent));
+                btnCustomer.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
+                btnMerchant.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.transparent));
+                Globals.isUserLoggedIn=true;
             }
         });
         btnMerchant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btnCustomer.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.transparent));
-                btnMerchant.setBackgroundColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
+                Globals.isUserLoggedIn=false;
+                btnCustomer.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.transparent));
+                btnMerchant.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
             }
         });
 

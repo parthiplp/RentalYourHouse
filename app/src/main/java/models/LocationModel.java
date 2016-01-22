@@ -1,4 +1,4 @@
-package house.rental.com.rentalyourhouse;
+package models;
 
 /**
  * Created by BSILIND\parthiban.m on 6/1/16.

@@ -54,13 +54,13 @@ public class RangeSeekBar<T extends Number> extends ImageView {
     public static final Integer DEFAULT_MINIMUM = 1000;
     public static final Integer DEFAULT_MAXIMUM = 10000;
     public static final int HEIGHT_IN_DP = 30;
-    public static final int TEXT_LATERAL_PADDING_IN_DP = 3;
+    public static final int TEXT_LATERAL_PADDING_IN_DP = 2;
     private static final int INITIAL_PADDING_IN_DP = 8;
-    private final int LINE_HEIGHT_IN_DP = 2;
+    private final int LINE_HEIGHT_IN_DP = 3;
     private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Bitmap thumbImage = BitmapFactory.decodeResource(getResources(), R.drawable.seek_thumb_normal);
-    private final Bitmap thumbPressedImage = BitmapFactory.decodeResource(getResources(), R.drawable.seek_thumb_pressed);
-    private final Bitmap thumbDisabledImage = BitmapFactory.decodeResource(getResources(), R.drawable.seek_thumb_disabled);
+    private final Bitmap thumbPressedImage = BitmapFactory.decodeResource(getResources(), R.drawable.seek_thumb_normal);
+    private final Bitmap thumbDisabledImage = BitmapFactory.decodeResource(getResources(), R.drawable.seek_thumb_normal);
     private final float thumbWidth = thumbImage.getWidth();
     private final float thumbHalfWidth = 0.5f * thumbWidth;
     private final float thumbHalfHeight = 0.5f * thumbImage.getHeight();
@@ -77,7 +77,8 @@ public class RangeSeekBar<T extends Number> extends ImageView {
     /**
      * Default color of a {@link RangeSeekBar}, #FF33B5E5. This is also known as "Ice Cream Sandwich" blue.
      */
-    public static final int DEFAULT_COLOR = Color.argb(0xFF, 0x33, 0xB5, 0xE5);
+ //   public static final int DEFAULT_COLOR = Color.argb(0xFF, 0x33, 0xB5, 0xE5);
+    public static final int DEFAULT_COLOR = Color.RED;
     /**
      * An invalid pointer id.
      */
@@ -461,10 +462,10 @@ public class RangeSeekBar<T extends Number> extends ImageView {
         paint.setAntiAlias(true);
 
         // draw min and max labels
-        String minLabel = getContext().getString(R.string.demo_min_label);
-        String maxLabel = getContext().getString(R.string.demo_max_label);
+        String minLabel = "  ";
+        String maxLabel = "  ";
         float minMaxLabelSize = Math.max(paint.measureText(minLabel), paint.measureText(maxLabel));
-        float minMaxHeight = mTextOffset + thumbHalfHeight + mTextSize / 3;
+        float minMaxHeight = mTextOffset + thumbHalfHeight + mTextSize /5;
         canvas.drawText(minLabel, 0, minMaxHeight, paint);
 
         canvas.drawText(maxLabel, getWidth() - minMaxLabelSize, minMaxHeight, paint);

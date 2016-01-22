@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
         android:background="@color/white"
         android:orientation="vertical">
 
@@ -20,15 +21,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="5dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="6dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:padding="3dp">
+                    android:padding="4dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -36,11 +37,12 @@
                         android:layout_weight="1"
                         android:padding="6dp"
                         android:text="@string/locality"
-                        android:textSize="18sp" />
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size" />
 
                     <Button
-                        android:layout_width="26dp"
-                        android:layout_height="26dp"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
                         android:layout_margin="3dp"
                         android:background="@drawable/location_search" />
                 </LinearLayout>
@@ -53,9 +55,11 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:padding="6dp"
                     android:text="@string/property_type"
-                    android:textSize="16sp" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size" />
 
                 <View
                     android:layout_width="match_parent"
@@ -74,11 +78,11 @@
                         android:layout_margin="6dp"
                         android:background="@color/white"
                         android:drawablePadding="6dp"
-                        android:drawableTop="@drawable/home_splash"
+                        android:drawableTop="@drawable/home_small"
                         android:padding="4dp"
                         android:text="@string/home"
                         android:textAllCaps="false"
-                        android:textColor="@color/black" />
+                        android:textSize="@dimen/text_subtitle" />
 
                     <Button
                         android:layout_width="wrap_content"
@@ -86,11 +90,12 @@
                         android:layout_margin="6dp"
                         android:background="@color/white"
                         android:drawablePadding="6dp"
-                        android:drawableTop="@drawable/villa"
+                        android:drawableTop="@drawable/villa_small"
                         android:padding="4dp"
                         android:text="@string/villa"
                         android:textAllCaps="false"
-                        android:textColor="@color/black" />
+
+                        android:textSize="@dimen/text_subtitle" />
 
                     <Button
                         android:layout_width="wrap_content"
@@ -98,11 +103,12 @@
                         android:layout_margin="6dp"
                         android:background="@color/white"
                         android:drawablePadding="6dp"
-                        android:drawableTop="@drawable/flat"
+                        android:drawableTop="@drawable/apartment_small"
                         android:padding="4dp"
                         android:text="@string/flats"
                         android:textAllCaps="false"
-                        android:textColor="@color/black" />
+
+                        android:textSize="@dimen/text_subtitle" />
                 </LinearLayout>
 
                 <TextView
@@ -110,7 +116,8 @@
                     android:layout_height="wrap_content"
                     android:padding="6dp"
                     android:text="@string/amenities"
-                    android:textSize="16sp" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size" />
 
                 <View
                     android:layout_width="match_parent"
@@ -120,25 +127,32 @@
                 <LinearLayout
                     android:id="@+id/layout_list"
                     android:layout_width="match_parent"
-                    android:layout_height="90dp"
+                    android:layout_height="110dp"
                     android:gravity="center"
 
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="20dp"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
                         android:background="@drawable/left_arrow" />
 
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/recycler_view"
+                    <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
+                        android:layout_height="80dp"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recycler_view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center" />
+                    </LinearLayout>
 
                     <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="20dp"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
                         android:background="@drawable/right_arrow_gray" />
                 </LinearLayout>
 
@@ -147,21 +161,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="gone"
-                   >
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="6dp"
-
                         android:text="Rooms"
-                        android:textSize="16sp" />
+                        android:textColor="@color/red_header"
+                        android:textSize="@dimen/text_size"
+                        android:textStyle="bold" />
 
                     <Spinner
                         android:id="@+id/spinner_rooms"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp" />
+                        android:layout_height="@dimen/spionner_height" />
 
                     <View
                         android:layout_width="match_parent"
@@ -173,12 +187,14 @@
                         android:layout_height="wrap_content"
                         android:padding="6dp"
                         android:text="Facing"
-                        android:textSize="16sp" />
+                        android:textColor="@color/red_header"
+                        android:textSize="@dimen/text_size"
+                        android:textStyle="bold" />
 
                     <Spinner
                         android:id="@+id/spinner_facing"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp" />
+                        android:layout_height="@dimen/spionner_height" />
 
                     <View
                         android:layout_width="match_parent"
@@ -190,12 +206,14 @@
                         android:layout_height="wrap_content"
                         android:padding="6dp"
                         android:text="Overlooking"
-                        android:textSize="16sp" />
+                        android:textColor="@color/red_header"
+                        android:textSize="@dimen/text_size"
+                        android:textStyle="bold" />
 
                     <Spinner
                         android:id="@+id/spinner_overlooking"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp" />
+                        android:layout_height="@dimen/spionner_height" />
 
                     <View
                         android:layout_width="match_parent"
@@ -207,12 +225,14 @@
                         android:layout_height="wrap_content"
                         android:padding="6dp"
                         android:text="Overlooking"
-                        android:textSize="16sp" />
+                        android:textColor="@color/red_header"
+                        android:textSize="@dimen/text_size"
+                        android:textStyle="bold" />
 
                     <Spinner
                         android:id="@+id/spinner_overlooking_1"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp" />
+                        android:layout_height="@dimen/spionner_height" />
 
                     <View
                         android:layout_width="match_parent"
@@ -224,12 +244,14 @@
                         android:layout_height="wrap_content"
                         android:padding="6dp"
                         android:text="Parking"
-                        android:textSize="16sp" />
+                        android:textColor="@color/red_header"
+                        android:textSize="@dimen/text_size"
+                        android:textStyle="bold" />
 
                     <Spinner
                         android:id="@+id/spinner_parking"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp" />
+                        android:layout_height="@dimen/spionner_height" />
 
                     <View
                         android:layout_width="match_parent"
@@ -242,50 +264,57 @@
                     android:layout_height="wrap_content"
                     android:padding="6dp"
                     android:text="@string/price_range"
-                    android:textSize="16sp" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/grey" />
 
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
+                    android:gravity="right|center"
                     android:orientation="horizontal"
                     android:paddingRight="8dp">
 
                     <TextView
 
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         android:background="@drawable/rupee" />
 
                     <TextView
                         android:id="@+id/txt_min"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1000" />
+                        android:text="1000"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_subtitle" />
 
                     <TextView
 
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="4dp"
-                        android:text="to" />
+                        android:text="to"
+                        android:textSize="@dimen/text_subtitle" />
 
                     <TextView
 
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         android:background="@drawable/rupee" />
 
                     <TextView
                         android:id="@+id/txt_max"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="10000" />
+                        android:text="10000"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_subtitle" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -305,7 +334,8 @@
                     <adapter.RangeSeekBar
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="4dp" />
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginTop="-25dp" />
 
                     <Button
                         android:id="@+id/btn_search"

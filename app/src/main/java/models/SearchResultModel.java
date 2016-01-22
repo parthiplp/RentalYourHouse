@@ -1,4 +1,4 @@
-package house.rental.com.rentalyourhouse;
+package models;
 
 import android.graphics.Bitmap;
 

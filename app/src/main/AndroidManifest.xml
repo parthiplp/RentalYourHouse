@@ -30,10 +30,12 @@
         </activity>
         <activity
             android:name=".SignupActivity"
-            android:label="@string/welcome" />
+            android:label="@string/welcome"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".SigninActivity"
-            android:label="@string/welcome" />
+            android:label="@string/welcome"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".MainActivity" />
         <activity
             android:name=".OTPActivation"
@@ -43,7 +45,7 @@
             android:label="FOR RENT (Location)" />
         <activity
             android:name=".SearchResultDetail"
-            android:label="$ 4000 - 5000" />
+            android:label=""/>
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"

@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
 
-  <include layout="@layout/toolbar"/>
+        <include layout="@layout/toolbar" />
 
 
         <android.support.v7.widget.CardView
@@ -54,8 +54,8 @@
                         android:layout_margin="2dp"
                         android:background="@drawable/circle"
                         android:text="f"
-                        android:textStyle="bold"
-                        android:textAllCaps="false" />
+                        android:textAllCaps="false"
+                        android:textStyle="bold" />
 
                     <ImageButton
                         android:layout_width="40dp"
@@ -68,10 +68,10 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_margin="2dp"
-                        android:textStyle="bold"
                         android:background="@drawable/circle"
                         android:text="in"
-                        android:textAllCaps="false" />
+                        android:textAllCaps="false"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -114,31 +114,34 @@
                     android:layout_height="1dp"
                     android:background="@color/colorPrimary" />
 
-                <android.support.design.widget.TextInputLayout
+
+                <EditText
+                    android:id="@+id/edit_signin_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Email">
+                    android:layout_marginTop="4dp"
+                    android:hint="Email"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress"
+                    android:nextFocusDown="@+id/edit_signin_passWord"
+                    android:singleLine="true"
+                    android:textSize="15sp" />
 
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Email"
-                        android:textSize="15sp" />
-                </android.support.design.widget.TextInputLayout>
 
-                <android.support.design.widget.TextInputLayout
+                <EditText
+                    android:id="@+id/edit_signin_passWord"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password">
+                    android:layout_marginTop="4dp"
+                    android:hint="Password"
+                    android:imeOptions="actionDone"
+                    android:password="true"
+                    android:singleLine="true"
+                    android:textSize="15sp" />
 
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Password"
-                        android:textSize="15sp" />
-                </android.support.design.widget.TextInputLayout>
 
                 <RadioGroup
+                    android:id="@+id/radio_user_group"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -146,11 +149,14 @@
                     android:orientation="horizontal">
 
                     <RadioButton
+                        android:id="@+id/radio_customer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:checked="true"
                         android:text="Signin as Customer" />
 
                     <RadioButton
+                        android:id="@+id/radio_merchant"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Signin as Merchant" />

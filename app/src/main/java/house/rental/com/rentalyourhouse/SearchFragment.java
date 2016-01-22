@@ -1,11 +1,14 @@
 package house.rental.com.rentalyourhouse;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +22,7 @@ import java.util.ArrayList;
 
 import adapter.RangeSeekBar;
 import adapter.SearchRecyclerViewAdapter;
+import adapter.WrapContentLinearLayoutManager;
 
 
 public class SearchFragment extends Fragment {
@@ -41,7 +45,7 @@ public class SearchFragment extends Fragment {
         myLists.add("1BHK");
         myLists.add("2BHK");
         myLists.add("3BHK");
-        myLists.add("4BHK");
+       // myLists.add("4BHK");
         myLists.add("Furnished");
         spinnerRooms = (Spinner) v.findViewById(R.id.spinner_rooms);
         spinnerFacing = (Spinner) v.findViewById(R.id.spinner_facing);
@@ -77,26 +81,41 @@ public class SearchFragment extends Fragment {
         spinnerRooms.setAdapter(adapter);
 
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(getActivity(), R.layout.spinner_list, listFacing);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFacing.setAdapter(adapter1);
 
         ArrayAdapter<String> adapter2 = new ArrayAdapter<>(getActivity(), R.layout.spinner_list, listOverLooking);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerOverLooking.setAdapter(adapter2);
 
         ArrayAdapter<String> adapter3 = new ArrayAdapter<>(getActivity(), R.layout.spinner_list, listOverLookingOne);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         overLookingOne.setAdapter(adapter3);
 
         ArrayAdapter<String> adapter4 = new ArrayAdapter<>(getActivity(), R.layout.spinner_list, listParking);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerParking.setAdapter(adapter4);
 
         SearchRecyclerViewAdapter recyclerViewAdapter = new SearchRecyclerViewAdapter(myLists, getActivity());
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+       /* LinearLayoutManager llm = new LinearLayoutManager(getActivity());*/
+        WrapContentLinearLayoutManager llm = new WrapContentLinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         llm.setOrientation(LinearLayoutManager.HORIZONTAL);
+
         recyclerView.setLayoutManager(llm);
+   /*     recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+                try {
+                    RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) view.getLayoutParams();
+                    params.width = parent.getWidth()/2;
+                    view.setLayoutParams(params);
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
+                }
+            }
+        });*/
         recyclerView.setAdapter(recyclerViewAdapter);
+
         RangeSeekBar<Integer> rangeSeekBar = new RangeSeekBar<>(getActivity());
 
         // Set the range
@@ -110,12 +129,21 @@ public class SearchFragment extends Fragment {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(getActivity(),SearchResultActivity.class);
+                Intent intent = new Intent(getActivity(), SearchResultActivity.class);
                 startActivity(intent);
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        layoutDeteils.setVisibility(View.GONE);
+                        layoutRow.setVisibility(View.VISIBLE);
+                    }
+                }, 2000);
+
             }
         });
+
         return v;
     }
-
 
 }

@@ -63,6 +63,7 @@ public class SearchRecyclerViewAdapter extends RecyclerView.Adapter<SearchRecycl
           //  TextView textView=(TextView)v;
             SearchFragment.layoutDeteils.setVisibility(View.VISIBLE);
             SearchFragment.layoutRow.setVisibility(View.GONE);
+
         }
     }
 }
